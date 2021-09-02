@@ -9,17 +9,12 @@ var cors = require('cors');
 var dotenv=require('dotenv');
 var mongoose=require('mongoose');
 
-
 dotenv.config();
 app.use(cors());
-
-
 
 mongoose.connect(process.env.db_con,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
    console.log("db connected....");
 })
-
-
 
 app.use('/api',routes);
 
