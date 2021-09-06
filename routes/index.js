@@ -3,8 +3,8 @@ var router=express.Router();
 
 const {signup}=require('../controllers/signup')
 const {login}=require('../controllers/login')
-
-
+const {savetrip}=require('../controllers/trips')
+var tokenauth=require('../controllers/verifyToken');
 
 
 
@@ -15,7 +15,7 @@ router.get('/test',(req,res)=>{
 
 router.post('/signup', signup);
 router.post('/login', login);
-
+router.post('/trip', tokenauth,savetrip);
 
 
 

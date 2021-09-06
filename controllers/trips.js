@@ -1,5 +1,6 @@
 const Trip= require('../models/trips');
 
+
 const savetrip= async(req,res)=>{
     const trip=new Trip({
         // trip_id:_id,
