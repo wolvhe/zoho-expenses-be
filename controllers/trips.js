@@ -9,10 +9,9 @@ const savetrip= async(req,res)=>{
         trip_destination:req.body.trip_destination,
         trip_visa:req.body.trip_visa,
         business_purpose:req.body.business_purpose,
-        mode_of_transport:req.body.mode_of_transport
+        flight:req.body.flight
     })
 
-    console.log(trip);
     try {
         
         const Savetrip = await trip.save();

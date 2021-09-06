@@ -2,6 +2,10 @@ var mongoose=require('mongoose');
 
 
 const tripSchema=new mongoose.Schema({
+    email:{
+        type:String
+    },
+
     trip_id:{
         type:Number,
         min:6,
@@ -32,90 +36,99 @@ const tripSchema=new mongoose.Schema({
         min:6,
         max:255
     },
-    mode_of_transport:{
-        type:String
-    },
+    
 
-    flight_type:{
-        type:String,
-        min:6,
-        max:255
-    },
-    flight_depart_from:{
-        type:String,
-        min:6,
-        max:255
-    },
-    flight_arrive_at:{
-        type:String,
-        min:6,
-        max:255
-    },
-    flight_departure_time:{
-        type:String,
-        min:6,
-        max:255
-    },
-    flight_description:{
-        type:String,
-        min:6,
-        max:255
-    },
-    hotel_location:{
-        type:String,
-        min:6,
-        max:255
-    },
-    hotel_check_in:{
-        type:String,
-        min:6,
-        max:255
-    },
-    hotel_check_out:{
-        type:String,
-        min:6,
-        max:255
-    },
-    hotel_description:{
-        type:String,
-        min:6,
-        max:255
-    },
-    car_pick_up:{
-        type:String,
-        min:6,
-        max:255
-    },
-    car_drop_off:{
-        type:String,
-        min:6,
-        max:255
-    },
-    car_description:{
-        type:String,
-        min:6,
-        max:255
-    },
-    bus_depart_from:{
-        type:String,
-        min:6,
-        max:255
-    },
-    bus_arrive_at:{
-        type:String,
-        min:6,
-        max:255
-    },
-    bus_departure_time:{
-        type:String,
-        min:6,
-        max:255
-    },
-    bus_description:{
-        type:String,
-        min:6,
-        max:255
-    },
+
+// array type
+    flight:[{
+        flight_type:{
+            type:String,
+            min:6,
+            max:255
+        },
+        flight_depart_from:{
+            type:String,
+            min:6,
+            max:255
+        },
+        flight_arrive_at:{
+            type:String,
+            min:6,
+            max:255
+        },
+        flight_departure_time:{
+            type:String,
+            min:6,
+            max:255
+        },
+        flight_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    hotel:[{
+        hotel_location:{
+            type:String,
+            min:6,
+            max:255
+        },
+        hotel_check_in:{
+            type:String,
+            min:6,
+            max:255
+        },
+        hotel_check_out:{
+            type:String,
+            min:6,
+            max:255
+        },
+        hotel_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    car:[{
+        car_pick_up:{
+            type:String,
+            min:6,
+            max:255
+        },
+        car_drop_off:{
+            type:String,
+            min:6,
+            max:255
+        },
+        car_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    bus:[{
+        bus_depart_from:{
+            type:String,
+            min:6,
+            max:255
+        },
+        bus_arrive_at:{
+            type:String,
+            min:6,
+            max:255
+        },
+        bus_departure_time:{
+            type:String,
+            min:6,
+            max:255
+        },
+        bus_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    train:[{
     train_depart_from:{
         type:String,
         min:6,
@@ -135,7 +148,8 @@ const tripSchema=new mongoose.Schema({
         type:String,
         min:6,
         max:255
-    },
+    }
+    }]
 
 });
 
