@@ -29,7 +29,7 @@ app.use(cors());
 
 
 
-mongoose.connect(process.env.db_con1,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
+mongoose.connect(process.env.db_con,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
    console.log("db connected....");
 })
 

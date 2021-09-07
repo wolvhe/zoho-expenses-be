@@ -5,8 +5,17 @@ const {signup}=require('../controllers/signup')
 const {login}=require('../controllers/login')
 const {savetrip}=require('../controllers/trips')
 const {saveadvance}=require('../controllers/advance')
+const Cust= require('../models/Cust')
 var tokenauth=require('../controllers/verifyToken');
 
+
+router.get('/getname/:mail',async (req,res)=>{
+    console.log(req.params);
+    const userinfo= await Cust.findOne({email:req.params.mail});
+    console.log(userinfo);
+
+    res.send(userinfo.org_name);
+});
 
 
 router.get('/test',(req,res)=>{
