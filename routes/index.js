@@ -13,11 +13,16 @@ router.get('/test',(req,res)=>{
     console.log("hello");
     res.send("working");
 });
+router.get('/getuser',(req,res)=>{
+    console.log("hibjgfyd");
+    res.send("working");
+})
 
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/trip', savetrip);
 router.post('/advance',saveadvance);
+
 
 
 
