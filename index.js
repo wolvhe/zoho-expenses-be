@@ -20,12 +20,15 @@ mongoose.connect(process.env.db_con,{ useNewUrlParser: true,useUnifiedTopology: 
 })
 
 
+app.get('/', function(req, res){
+   console.log("App");
+
+   // res.send("Hello world!");
+});
 
 app.use('/api',routes);
 
-app.get('/', function(req, res){
-   res.send("Hello world!");
-});
+
 
 app.listen(3000,()=>{
     console.log("App listeing on 3000");
