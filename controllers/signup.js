@@ -3,7 +3,6 @@ const Cust = require('../models/Cust');
 
 
 const signup = async (req, res) => {
-
     const cust = new Cust({
         org_name: req.body.orgname,
         email: req.body.email,
@@ -15,7 +14,6 @@ const signup = async (req, res) => {
     // console.log(req.body)
     console.log(cust);
     try {
-  
         console.log("initiating save command -------------------------");
         const savedUser = await cust.save();
         console.log(savedUser);
