@@ -41,110 +41,138 @@ const tripSchema=new mongoose.Schema({
 
 // array type
     flight:[{
-        flight_type:{
+        f_type:{
             type:String,
             min:6,
             max:255
         },
-        flight_depart_from:{
+        f_Departure_From:{
             type:String,
             min:6,
             max:255
         },
-        flight_arrive_at:{
+        f_Arrive_At:{
             type:String,
             min:6,
             max:255
         },
-        flight_departure_time:{
+        f_Departure_date:{
             type:String,
             min:6,
             max:255
         },
-        flight_description:{
+        f_Arrive_date:{
+            type:String,
+            min:6,
+            max:255
+        },
+        f_Description:{
             type:String,
             min:6,
             max:255
         }
     }],
     hotel:[{
-        hotel_location:{
+        h_location:{
             type:String,
             min:6,
             max:255
         },
-        hotel_check_in:{
+        h_check_in:{
             type:String,
             min:6,
             max:255
         },
-        hotel_check_out:{
+        h_check_out:{
             type:String,
             min:6,
             max:255
         },
-        hotel_description:{
+        h_description:{
             type:String,
             min:6,
             max:255
         }
     }],
     car:[{
-        car_pick_up:{
+        c_pick_up_date:{
             type:String,
             min:6,
             max:255
         },
-        car_drop_off:{
+        c_drop_off_date:{
             type:String,
             min:6,
             max:255
         },
-        car_description:{
+        c_pick_up_time:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_drop_off_time:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_pick_up_city:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_drop_off_city:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_type:{
+            type:String
+        },
+        c_description:{
             type:String,
             min:6,
             max:255
         }
     }],
     bus:[{
-        bus_depart_from:{
+        b_Departure_from:{
             type:String,
             min:6,
             max:255
         },
-        bus_arrive_at:{
+        b_Arrive_At:{
             type:String,
             min:6,
             max:255
         },
-        bus_departure_time:{
+        b_Departure_date:{
             type:String,
             min:6,
             max:255
         },
-        bus_description:{
+        b_description:{
             type:String,
             min:6,
             max:255
         }
     }],
     train:[{
-    train_depart_from:{
+    t_Departure_from:{
         type:String,
         min:6,
         max:255
     },
-    train_arrive_at:{
+    t_Arrive_At:{
         type:String,
         min:6,
         max:255
     },
-    train_departure_time:{
+    t_Departure_date:{
         type:String,
         min:6,
         max:255
     },
-    train_description:{
+    t_description:{
         type:String,
         min:6,
         max:255
