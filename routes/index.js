@@ -7,7 +7,10 @@ const {savetrip}=require('../controllers/trips')
 const {saveadvance}=require('../controllers/advance')
 const Cust= require('../models/Cust')
 const Trip= require('../models/trips');
+const Advance=require('../models/advance')
 var tokenauth=require('../controllers/verifyToken');
+const req = require('express/lib/request');
+const advance = require('../models/advance');
 
 
 router.get('/getname/:mail',async (req,res)=>{
@@ -20,10 +23,18 @@ router.get('/getname/:mail',async (req,res)=>{
 
 router.get('/gettrip/:mail',async (req,res)=>{
     console.log(req.params);
-    const tripinfo= await Trip.findOne({email:req.params.mail});
+    const tripinfo= await Trip.find({email:req.params.mail});
     console.log(tripinfo);
 
     res.send(tripinfo);
+});
+
+router.get('/getadvance/:mail',async (req,res)=>{
+    console.log(req.params);
+    const advanceinfo= await Advance.find({email:req.params.mail});
+    console.log(advanceinfo);
+
+    res.send(advanceinfo);
 });
 
 router.get('/test',(req,res)=>{
