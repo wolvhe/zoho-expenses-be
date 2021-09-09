@@ -1,4 +1,4 @@
-const newReportSchema = require("../models/reports")
+const newReportSchema = require("../../models/reports")
 
 const updateReports = async (req, res) => {
     const currentReport = await newReportSchema.findOne({

@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const newReportSchema = require("../models/reports")
+const newReportSchema = require("../../models/reports")
 
 const newReport = async (req, res) => {
     try {
