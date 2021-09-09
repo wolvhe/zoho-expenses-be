@@ -20,6 +20,12 @@ const newReportSchema = new mongoose.Schema({
     },
     status: {
         type: String,
+    },
+    total: {
+        type: String
+    },
+    tobeReimbursed: {
+        type: String
     }
 })
 

@@ -9,7 +9,9 @@ const newReport = async (req, res) => {
             durationFrom: req.body.durationFrom,
             durationTo: req.body.durationTo,
             associateWithTrip: req.body.associateWithTrip,
-            status: req.body.status
+            status: req.body.status,
+            total: "0",
+            toBeReimbursed: "0"
         })
         // report.durationFrom instanceof Date
         // report.durationTo instanceof Date
