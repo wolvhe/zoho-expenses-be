@@ -16,6 +16,7 @@ const {newCorporateCardByManual} = require("../controllers/cards/newCard")
 const {newPersonalCardByManual} = require("../controllers/cards/newCard")
 const {newCorporateCardByBank} = require("../controllers/cards/newCard")
 const {newPersonalCardByBank} = require("../controllers/cards/newCard")
+const {getAllCards} = require("../controllers/cards/getCards")
 
 router.get('/test',(req,res)=>{
     console.log("hello");
@@ -37,5 +38,6 @@ router.post('/cards/new/corporate/manual', newCorporateCardByManual)
 router.post('/cards/new/personal/manual', newPersonalCardByManual)
 router.post('/cards/new/corporate/bank', newCorporateCardByBank)
 router.post('/cards/new/personal/bank', newPersonalCardByBank)
+router.get('/cards', getAllCards)
 
 module.exports=router;
