@@ -10,6 +10,7 @@ const {getAllReports} = require('../controllers/reports/getReports')
 const {getPendingReports} = require('../controllers/reports/getReports')
 const {getApprovedReports} = require('../controllers/reports/getReports')
 const {updateReports} = require('../controllers/reports/updateReports')
+const {bulkImport} = require('../controllers/reports/bulkImport')
 
 //cards functions
 const {newCorporateCardByManual} = require("../controllers/cards/newCard")
@@ -32,6 +33,7 @@ router.get('/reports', getAllReports)
 router.get('/reports/pending', getPendingReports)
 router.get('/reports/approved', getApprovedReports)
 router.put('/reports/edit', updateReports)
+router.post('/reports/bulkimport', bulkImport)
 
 //cards
 router.post('/cards/new/corporate/manual', newCorporateCardByManual)

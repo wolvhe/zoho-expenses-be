@@ -29,12 +29,5 @@ const newReportSchema = new mongoose.Schema({
     }
 })
 
-const importReports = new mongoose.Schema({
-    file: {
-        type: String,
-        required: true
-    }
-})
-
 
 module.exports = mongoose.model('newReportSchema', newReportSchema)
