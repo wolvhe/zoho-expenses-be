@@ -32,8 +32,10 @@ const userSchema=new mongoose.Schema({
         required:true,
         min:10,
         max:12
-    }
+    },
 
 });
+
+
 
 module.exports=mongoose.model('Cust',userSchema);
