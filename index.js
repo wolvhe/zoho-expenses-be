@@ -12,6 +12,7 @@ app.use(express.json());
 var cors = require('cors');
 var dotenv=require('dotenv');
 var mongoose=require('mongoose');
+const trips = require('./models/trips');
 
 
 dotenv.config();
@@ -29,9 +30,17 @@ app.use(cors());
 
 
 
-mongoose.connect(process.env.db_con1,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
+var db=mongoose.connect(process.env.db_con1,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
    console.log("db connected....");
 })
+
+// var query = trips.find();
+// console.log(trips.estimatedDocumentCount)
+// query.count(function (err, count) {
+//    if (err) console.log(err)
+//    else console.log("Count is", count+1)
+
+// });
 
 
 app.get('/', function(req, res){
@@ -41,6 +50,7 @@ app.get('/', function(req, res){
 });
 
 app.use('/api',routes);
+
 
 
 

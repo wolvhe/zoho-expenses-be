@@ -1,15 +1,15 @@
+const { status } = require('express/lib/response');
 var mongoose=require('mongoose');
 
 
 const tripSchema=new mongoose.Schema({
+
     email:{
         type:String
-    },
+    }, 
 
-    trip_id:{
+    trip_no:{
         type:Number,
-        min:6,
-        max:255
     },
     travel_type:{
         type:String,
@@ -177,7 +177,13 @@ const tripSchema=new mongoose.Schema({
         min:6,
         max:255
     }
-    }]
+    }],
+    status:{
+        type:String
+    },
+    approver:{
+        type:String
+    }
 
 });
 
