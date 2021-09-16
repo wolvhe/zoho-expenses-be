@@ -2,11 +2,11 @@ const newCardSchemaByManual = require("../../models/cards/cards")
 const newCardSchemaByBank = require("../../models/cards/cardsBank")
 
 const getAllCards = async (req, res) => {
-    const cardsByBank = newCardSchemaByBank.find({}, function(err1, result1) {
+    const cardsByBank = newCardSchemaByBank.find({email: req.params.email}, function(err1, result1) {
         if (err1) {
             console.log(err1);
         } else {
-            const cardsByManual = newCardSchemaByManual.find({}, function(err2, result2) {
+            const cardsByManual = newCardSchemaByManual.find({email: req.params.email}, function(err2, result2) {
                 if (err2) {
                     console.log(err2);
                 } else {

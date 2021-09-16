@@ -11,6 +11,7 @@ const {getPendingReports} = require('../controllers/reports/getReports')
 const {getApprovedReports} = require('../controllers/reports/getReports')
 const {updateReports} = require('../controllers/reports/updateReports')
 const {bulkImport} = require('../controllers/reports/bulkImport')
+const {deleteReport} = require('../controllers/reports/deleteReport')
 
 //cards functions
 const {newCorporateCardByManual} = require("../controllers/cards/newCard")
@@ -29,17 +30,18 @@ router.post('/login', login);
 
 // reports 
 router.post('/reports/new', newReport)
-router.get('/reports', getAllReports)
+router.get('/reports/:email', getAllReports)
 router.get('/reports/pending', getPendingReports)
 router.get('/reports/approved', getApprovedReports)
 router.put('/reports/edit', updateReports)
 router.post('/reports/bulkimport', bulkImport)
+router.delete('/reports/delete/:email/:reportName', deleteReport)
 
 //cards
 router.post('/cards/new/corporate/manual', newCorporateCardByManual)
 router.post('/cards/new/personal/manual', newPersonalCardByManual)
 router.post('/cards/new/corporate/bank', newCorporateCardByBank)
 router.post('/cards/new/personal/bank', newPersonalCardByBank)
-router.get('/cards', getAllCards)
+router.get('/cards/:email', getAllCards)
 
 module.exports=router;

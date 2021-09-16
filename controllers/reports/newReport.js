@@ -1,22 +1,18 @@
-const newReportSchema = require("../../models/reports/reports")
+// const newReportSchema = require("../../models/reports/reports")
+const bulkImportSchema = require("../../models/reports/bulkImport")
 
 const newReport = async (req, res) => {
     try {
-        const report = new newReportSchema({
-            name: req.body.name,
+        const report = new bulkImportSchema({
+            email: req.body.email,
+            reportName: req.body.reportName,
             businessPurpose: req.body.businessPurpose,
-            durationFrom: req.body.durationFrom,
-            durationTo: req.body.durationTo,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
             associateWithTrip: req.body.associateWithTrip,
-            status: req.body.status,
-            total: "0",
-            toBeReimbursed: "0"
+            status: req.body.status
         })
-        // report.durationFrom instanceof Date
-        // report.durationTo instanceof Date
-        // report.validateSync().errors['durationFrom']
-        // report.validateSync().errors['durationTo']
-        const savedReport = await report.save()
+        await report.save()
         res.end(JSON.stringify(report))
     
         // res.end(JSON.stringify(report))

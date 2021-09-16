@@ -5,6 +5,7 @@ const newCorporateCardByManual = async (req, res) => {
     try {
         let card = new newCardSchemaByManual({
             type: "Corporate",
+            email: req.body.email,
             cardType: req.body.cardType,
             accountName: req.body.accountName,
             currency: req.body.currency,
@@ -24,6 +25,7 @@ const newPersonalCardByManual = async (req, res) => {
     try {
         let card = new newCardSchemaByManual({
             type: "Personal",
+            email: req.body.email,
             cardType: req.body.cardType,
             accountName: req.body.accountName,
             currency: req.body.currency,
@@ -43,6 +45,7 @@ const newCorporateCardByBank = async (req, res) => {
     try {
         let card = new newCardSchemaByBank({
             type: "Corporate",
+            email: req.body.email,
             customerID: req.body.customerID,
             password: req.body.password
         })
@@ -59,6 +62,7 @@ const newPersonalCardByBank = async (req, res) => {
     try {
         let card = new newCardSchemaByBank({
             type: "Personal",
+            email: req.body.email,
             customerID: req.body.customerID,
             password: req.body.password
         })

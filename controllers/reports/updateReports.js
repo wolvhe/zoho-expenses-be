@@ -1,21 +1,21 @@
-const newReportSchema = require("../../models/reports/reports")
+// const newReportSchema = require("../../models/reports/reports")
+const bulkImportSchema = require("../../models/reports/bulkImport")
 
 const updateReports = async (req, res) => {
-    const currentReport = await newReportSchema.findOne({
-        name: req.body.currentName
+    const currentReport = await bulkImportSchema.findOne({
+        name: req.body.reportName,
+        email: req.body.email
     })
     // console.log(currentReport.name);
-    const updateReport = await newReportSchema.updateOne({
-        name: req.body.currentName,
+    const updateReport = await bulkImportSchema.updateOne({
+        name: req.body.reportName,
+        email: req.body.email
     },{
-        name: req.body.newName || currentReport.name,
+        reportName: req.body.newReportName || currentReport.reportName,
         businessPurpose: req.body.newBusinessPurpose || currentReport.businessPurpose,
         durationFrom: req.body.newDurationFrom || currentReport.durationFrom,
         durationTo: req.body.newDurationTo || currentReport.durationTo,
         associateWithTrip: req.body.newAssociateWithTrip || currentReport.associateWithTrip,
-        status: req.body.newStatus || currentReport.status,
-        total: req.body.total || currentReport.total,
-        toBeReimbursed: req.body.toBeReimbursed || currentReport.toBeReimbursed
     })
     // console.log(updateReport);
     res.end(JSON.stringify(updateReport))

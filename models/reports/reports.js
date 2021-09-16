@@ -1,7 +1,11 @@
 const mongoose = require("mongoose")
 
 const newReportSchema = new mongoose.Schema({
-    name: {
+    email: {
+        type: String,
+        required: true
+    },
+    reportName: {
         type: String,
         required: true
     },
@@ -9,10 +13,10 @@ const newReportSchema = new mongoose.Schema({
         type: String,
         max: 500
     },
-    durationFrom: {
+    startDate: {
         type: String,
     },
-    durationTo: {
+    endDate: {
         type: String,
     },
     associateWithTrip: {

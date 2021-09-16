@@ -1,11 +1,19 @@
 const mongoose = require("mongoose")
 
 const bulkImportSchema = new mongoose.Schema({
+    email: {
+        type:String,
+        required: true
+    },
+    status: {
+        type: String
+    },
     reportName: {
         type: String,
     },
     reportNumber: {
-        type: String
+        type: Number,
+        default: 0
     },
     businessPurpose: {
         type: String
@@ -15,6 +23,9 @@ const bulkImportSchema = new mongoose.Schema({
     },
     endDate: {
         type: String
+    },
+    associateWithTrip: {
+        type: String,
     },
     reportType: {
         type: String
@@ -52,8 +63,16 @@ const bulkImportSchema = new mongoose.Schema({
     reference: {
         type: String
     },
+    total: {
+        type: Number,
+        default: 0
+    },
+    toBeReimbursed: {
+        type: Number,
+        default: 0
+    },
     isReimbursable: {
-        type: String
+        type: Boolean,
     },
     isBillable: {
         type: String
