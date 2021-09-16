@@ -2,6 +2,7 @@ const Advance=require('../models/advance')
 
 const saveadvance= async(req,res)=>{
     const advance=new Advance({
+        email:req.body.email,
         amount:req.body.amount,
         date:req.body.date,
         paid_through:req.body.paid_through,
