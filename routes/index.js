@@ -19,8 +19,6 @@ const { report } = require('../controllers/report')
 
 
 
-const Cust = require('../models/Cust')
-const Trip = require('../models/trips');
 const Report = require('../models/report');
 
 
