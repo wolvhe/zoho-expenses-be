@@ -14,12 +14,12 @@ const advance = require('../models/advance');
 
 const { expense } = require('../controllers/expense')
 const { bulkexpenses } = require('../controllers/bulkexpenses')
-const { report } = require('../controllers/report')
+// const { report } = require('../controllers/report')
 
 
 
 
-const Report = require('../models/report');
+// const Report = require('../models/report');
 
 
 var tokenauth = require('../controllers/verifyToken');
@@ -34,6 +34,24 @@ const Expense = require('../models/expense');
 //     const sorted=arr.filter(ex=>ex.category===req.body.category)
 //     res.send(sorted);
 // });
+
+//reports functions
+const {newReport} = require('../controllers/reports/newReport')
+const {getAllReports} = require('../controllers/reports/getReports')
+const {getPendingReports} = require('../controllers/reports/getReports')
+const {getApprovedReports} = require('../controllers/reports/getReports')
+const {updateReports} = require('../controllers/reports/updateReports')
+const {bulkImport} = require('../controllers/reports/bulkImport')
+const {deleteReport} = require('../controllers/reports/deleteReport')
+
+//cards functions
+const {newCorporateCardByManual} = require("../controllers/cards/newCard")
+const {newPersonalCardByManual} = require("../controllers/cards/newCard")
+const {newCorporateCardByBank} = require("../controllers/cards/newCard")
+const {newPersonalCardByBank} = require("../controllers/cards/newCard")
+const {getAllCards} = require("../controllers/cards/getCards")
+
+
 
 router.post('/sortexpenses', async (req, res) => {
     console.log(req.body);
@@ -89,14 +107,14 @@ router.get('/getadvance/:mail',async (req,res)=>{
 });
 
 
-router.get('/getreports/:mail', async (req, res) => {
-    // console.log(req.params);
-    const repinfo = await Report.findOne({ email: req.params.mail });
-    // console.log(repinfo);
-    const repname=[];
-    repinfo.reports.map(i=>repname.push(i.rep_name))
-    res.send(repname);
-});
+// router.get('/getreports/:mail', async (req, res) => {
+//     // console.log(req.params);
+//     const repinfo = await Report.findOne({ email: req.params.mail });
+//     // console.log(repinfo);
+//     const repname=[];
+//     repinfo.reports.map(i=>repname.push(i.rep_name))
+//     res.send(repname);
+// });
 
 router.get('/test', (req, res) => {
     console.log("hello");
@@ -111,9 +129,23 @@ router.post('/trip', savetrip);
 router.post('/advance', saveadvance);
 router.post('/newexpense', expense);
 router.post('/bulkexpenses', bulkexpenses);
-router.post('/addreport', report);
+// router.post('/addreport', report);
 
+// reports 
+router.post('/reports/new', newReport)
+router.get('/reports/:email', getAllReports)
+router.get('/reports/pending', getPendingReports)
+router.get('/reports/approved', getApprovedReports)
+router.put('/reports/edit', updateReports)
+router.post('/reports/bulkimport', bulkImport)
+router.delete('/reports/delete/:email/:reportName', deleteReport)
 
+//cards
+router.post('/cards/new/corporate/manual', newCorporateCardByManual)
+router.post('/cards/new/personal/manual', newPersonalCardByManual)
+router.post('/cards/new/corporate/bank', newCorporateCardByBank)
+router.post('/cards/new/personal/bank', newPersonalCardByBank)
+router.get('/cards/:email', getAllCards)
 
 
 
