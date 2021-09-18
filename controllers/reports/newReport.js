@@ -3,6 +3,7 @@ const bulkImportSchema = require("../../models/reports/bulkImport")
 
 const newReport = async (req, res) => {
     try {
+        
         const report = new bulkImportSchema({
             email: req.body.email,
             reportName: req.body.reportName,
@@ -13,6 +14,7 @@ const newReport = async (req, res) => {
             status: req.body.status
         })
         await report.save()
+        
         res.end(JSON.stringify(report))
     
         // res.end(JSON.stringify(report))

@@ -1,12 +1,16 @@
+const { status } = require('express/lib/response');
 var mongoose=require('mongoose');
-const { boolean } = require('webidl-conversions');
+
 
 const tripSchema=new mongoose.Schema({
-    // trip_id:{
-    //     type:Number,
-    //     min:6,
-    //     max:255
-    // },
+
+    email:{
+        type:String
+    }, 
+
+    trip_no:{
+        type:Number,
+    },
     travel_type:{
         type:String,
         min:6,
@@ -17,37 +21,169 @@ const tripSchema=new mongoose.Schema({
         min:6,
         max:255
     },
-    // trip_designation:{
-    //     type:String,
-    //     min:6,
-    //     max:255
-    // },
-    // trip_visa:{
-    //     type:Boolean,
-    //     min:6,
-    //     max:255
-    // },
+    trip_designation:{
+        type:String,
+        min:6,
+        max:255
+    },
+    trip_visa:{
+        type:Boolean,
+        min:6,
+        max:255
+    },
     business_purpose:{
         type:String,
         min:6,
         max:255
     },
+    
 
-    // flight_type:{
-    //     type:String,
-    //     min:6,
-    //     max:255
-    // },
-    // flight_depart_from:{
-    //     type:String,
-    //     min:6,
-    //     max:255
-    // },
-    // flight_description:{
-    //     type:String,
-    //     min:6,
-    //     max:255
-    // }
+
+// array type
+    flight:[{
+        f_type:{
+            type:String,
+            min:6,
+            max:255
+        },
+        f_Departure_From:{
+            type:String,
+            min:6,
+            max:255
+        },
+        f_Arrive_At:{
+            type:String,
+            min:6,
+            max:255
+        },
+        f_Departure_date:{
+            type:String,
+            min:6,
+            max:255
+        },
+        f_Arrive_date:{
+            type:String,
+            min:6,
+            max:255
+        },
+        f_Description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    hotel:[{
+        h_location:{
+            type:String,
+            min:6,
+            max:255
+        },
+        h_check_in:{
+            type:String,
+            min:6,
+            max:255
+        },
+        h_check_out:{
+            type:String,
+            min:6,
+            max:255
+        },
+        h_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    car:[{
+        c_pick_up_date:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_drop_off_date:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_pick_up_time:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_drop_off_time:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_pick_up_city:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_drop_off_city:{
+            type:String,
+            min:6,
+            max:255
+        },
+        c_type:{
+            type:String
+        },
+        c_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    bus:[{
+        b_Departure_from:{
+            type:String,
+            min:6,
+            max:255
+        },
+        b_Arrive_At:{
+            type:String,
+            min:6,
+            max:255
+        },
+        b_Departure_date:{
+            type:String,
+            min:6,
+            max:255
+        },
+        b_description:{
+            type:String,
+            min:6,
+            max:255
+        }
+    }],
+    train:[{
+    t_Departure_from:{
+        type:String,
+        min:6,
+        max:255
+    },
+    t_Arrive_At:{
+        type:String,
+        min:6,
+        max:255
+    },
+    t_Departure_date:{
+        type:String,
+        min:6,
+        max:255
+    },
+    t_description:{
+        type:String,
+        min:6,
+        max:255
+    }
+    }],
+    status:{
+        type:String
+    },
+    approver:{
+        type:String
+    }
 
 });
 
