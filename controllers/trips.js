@@ -29,7 +29,7 @@ const savetrip= async(req,res)=>{
         
         const Savetrip = await trip.save();
         console.log(Savetrip);
-        return res.send("sucessfully saved");
+        // return res.send("sucessfully saved");
     } catch (err) {
         return res.status(400).json(err);
     }
