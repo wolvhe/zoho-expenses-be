@@ -3,7 +3,7 @@ var router = express.Router();
 
 const {signup}=require('../controllers/signup')
 const {login}=require('../controllers/login')
-const {savetrip}=require('../controllers/trips')
+const {savetrip, deletetrip}=require('../controllers/trips')
 const {saveadvance}=require('../controllers/advance')
 const Cust= require('../models/Cust')
 const Trip= require('../models/trips');
@@ -11,7 +11,6 @@ const Advance=require('../models/advance')
 var tokenauth=require('../controllers/verifyToken');
 const req = require('express/lib/request');
 const advance = require('../models/advance');
-
 const { expense } = require('../controllers/expense')
 const { bulkexpenses } = require('../controllers/bulkexpenses')
 // const { report } = require('../controllers/report')
@@ -120,12 +119,20 @@ router.get('/test', (req, res) => {
     console.log("hello");
     res.send("working");
 });
+router.get('/getallexpenses/:mail', async (req, res) => {
+    console.log(req.params);
+    const allexpenses = await Expense.findOne({ email: req.params.mail });
+    console.log(allexpenses.expenses);
+
+    res.send(allexpenses.expenses);
+});
 
 
 
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/trip', savetrip);
+
 router.post('/advance', saveadvance);
 router.post('/newexpense', expense);
 router.post('/bulkexpenses', bulkexpenses);

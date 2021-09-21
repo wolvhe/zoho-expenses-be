@@ -8,6 +8,10 @@ var routes=require('./routes/index.js');
 
 var routes=require('./routes/index.js');
 app.use(express.json());
+
+var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+
 // app.use(express.urlencoded({ extended: true }));
 
 var cors = require('cors');
@@ -87,6 +91,6 @@ app.use('/api',routes);
 
 
 
-app.listen(3000,()=>{
+app.listen(server_port, server_host,()=>{
     console.log("App listeing on 3000");
 });
