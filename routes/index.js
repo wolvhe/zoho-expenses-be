@@ -89,6 +89,30 @@ router.get('/test', (req, res) => {
     res.send("working");
 });
 
+router.get('/getallexpenses/:mail', async (req, res) => {
+    console.log(req.params);
+    // console.log(req.headers.email);
+
+    const allexpenses = await Expense.findOne({ email: req.params.mail });
+    console.log(allexpenses);
+    
+    res.send(allexpenses.expenses);
+});
+
+router.get('/getexpense/:id', async (req, res) => {
+    console.log(req.params);
+    console.log(req.headers.email);
+    let exp={};
+    const allexpenses = await Expense.findOne({ email: req.headers.email });
+    allexpenses.expenses.map(i=>{
+        if(i._id==req.params.id){
+            exp=i;
+        }
+    })
+    console.log(exp);
+    res.send(exp);
+    // res.send(allexpenses.expenses);
+});
 
 
 router.post('/signup', signup);
