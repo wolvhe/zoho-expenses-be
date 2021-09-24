@@ -61,7 +61,7 @@ const tripSchema=new mongoose.Schema({
             min:6,
             max:255
         },
-        f_Arrive_date:{
+        f_Arrival_date:{
             type:String,
             min:6,
             max:255
