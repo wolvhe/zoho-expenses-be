@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var multer = require('multer');
-
+var trip =require('./controllers/trips')
 var tokenauth=require('./controllers/verifyToken');
 
 var routes=require('./routes/index.js');
@@ -18,6 +18,7 @@ var cors = require('cors');
 var dotenv=require('dotenv');
 var mongoose=require('mongoose');
 const trips = require('./models/trips');
+ 
 
 dotenv.config();
 app.use(cors());
@@ -87,6 +88,7 @@ app.get('/', function(req, res){
 
 app.use('/api',routes);
 
+// var a=db.trip.find().Count()+1
 
 
 

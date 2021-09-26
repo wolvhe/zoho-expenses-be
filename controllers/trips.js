@@ -1,7 +1,24 @@
 const trips = require('../models/trips');
 const Trip= require('../models/trips');
+var db=require('../index')
+// var a=2;
 
+// var sequential = require("sequential-ids");
  
+// var generator = new sequential.Generator({
+//   digits: 6, letters: 3,
+//   // store: function(key, ids) {
+//   //   // db.store(key, ids[ids.length - 1]);
+//   // },
+//   restore: "TRIPS -"+a
+// });
+ 
+
+// trip_id=generator.generate()
+// generator.start();
+// console.log(generator.generate());
+// console.log(generator.generate());            // => AAB - 001
+          
 const savetrip= async(req,res)=>{
     
     
@@ -9,7 +26,7 @@ const savetrip= async(req,res)=>{
     const trip=new Trip({
         
         email:req.body.email,
-        // trip_no:count+1,
+        // trip_no:trip_id,
         travel_type:req.body.travel_type,
         trip_name:req.body.trip_name,
         trip_destination:req.body.trip_destination,
@@ -23,6 +40,7 @@ const savetrip= async(req,res)=>{
         status:"approved",
         approver:req.body.email
     })
+    
 
 
     try {

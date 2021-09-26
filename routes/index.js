@@ -99,7 +99,13 @@ router.get('/gettrip/:mail', async (req, res) => {
 
     res.send(tripinfo);
 });
+router.get('/getindtrip/:id', async (req, res) => {
+    console.log(req.params);
+    const tripinfo= await Trip.find({_id:req.params.id});
+    // console.log(tripinfo);
 
+    res.send(tripinfo);
+});
 router.get('/getadvance/:mail',async (req,res)=>{
     console.log(req.params);
     const advanceinfo= await Advance.find({email:req.params.mail});
@@ -107,6 +113,14 @@ router.get('/getadvance/:mail',async (req,res)=>{
 
     res.send(advanceinfo);
 });
+router.get('/getindadvance/:id', async (req, res) => {
+    console.log(req.params);
+    const tripinfo= await Advance.find({_id:req.params.id});
+    // console.log(tripinfo);
+
+    res.send(tripinfo);
+});
+
 
 
 // router.get('/getreports/:mail', async (req, res) => {
