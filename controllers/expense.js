@@ -8,7 +8,7 @@ const expense = async (req, res) => {
         const exp = new Expense({
                 email,expenses:[{exp_date, merchant, category,amounttype, amount, paid_through, description, reference, add_to_report,receipts}]
         })
-        console.log(exp);
+        // console.log(exp);
         const savedExpense = await exp.save();
         console.log(savedExpense);
         console.log("saved dacoments-------------------------------");

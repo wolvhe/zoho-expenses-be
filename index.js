@@ -66,9 +66,9 @@ app.post('/api/upload', upload.array('bills'), function (req, res) {
  });
 
 
-var db=mongoose.connect(process.env.db_con1,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
-   console.log("db connected....");
-})
+// var db=mongoose.connect(process.env.db_con1,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{
+//    console.log("db connected....");
+// })
 
 // var query = trips.find();
 // console.log(trips.estimatedDocumentCount)

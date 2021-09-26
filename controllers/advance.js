@@ -15,8 +15,9 @@ const saveadvance= async(req,res)=>{
     try {
         
         const Saveadvance = await advance.save();
-        console.log(Saveadvance);
-        return res.send("sucessfully saved");
+        // console.log(Saveadvance);
+        // return res.send("sucessfully saved");
+        res.end(Saveadvance)
     } catch (err) {
         return res.status(400).json(err);
     }

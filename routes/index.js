@@ -42,6 +42,9 @@ const {getApprovedReports} = require('../controllers/reports/getReports')
 const {updateReports} = require('../controllers/reports/updateReports')
 const {bulkImport} = require('../controllers/reports/bulkImport')
 const {deleteReport} = require('../controllers/reports/deleteReport')
+const {getReportsByID} = require('../controllers/reports/getReports')
+const {updateExpenseInReport} = require('../controllers/reports/updateReports')
+const {updateAdvanceInReport} = require('../controllers/reports/updateReports')
 
 //cards functions
 const {newCorporateCardByManual} = require("../controllers/cards/newCard")
@@ -146,6 +149,9 @@ router.get('/reports/approved', getApprovedReports)
 router.put('/reports/edit', updateReports)
 router.post('/reports/bulkimport', bulkImport)
 router.delete('/reports/delete/:email/:reportName', deleteReport)
+router.get('/reports/:email/:_id', getReportsByID)
+router.post('/reports/add/expense', updateExpenseInReport)
+router.post('/reports/add/advance', updateAdvanceInReport)
 
 //cards
 router.post('/cards/new/corporate/manual', newCorporateCardByManual)

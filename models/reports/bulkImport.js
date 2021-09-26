@@ -1,5 +1,32 @@
 const mongoose = require("mongoose")
 
+const historySchema = new mongoose.Schema({
+    message: {
+        type: String,
+        required: true
+    },
+},{
+    timestamps: true
+})
+
+const expenseSchema = new mongoose.Schema({
+    expenseId: {
+        type: String,
+        required: true
+    },
+},{
+    timestamps: true
+})
+
+const advanceSchema = new mongoose.Schema({
+    advanceId: {
+        type: String,
+        required: true
+    },
+},{
+    timestamps: true
+})
+
 const bulkImportSchema = new mongoose.Schema({
     email: {
         type:String,
@@ -19,10 +46,10 @@ const bulkImportSchema = new mongoose.Schema({
         type: String
     },
     startDate: {
-        type: String
+        type: Date
     },
     endDate: {
-        type: String
+        type: Date
     },
     associateWithTrip: {
         type: String,
@@ -116,6 +143,16 @@ const bulkImportSchema = new mongoose.Schema({
     expenseType: {
         type: String
     },
+    expenseList: {
+        type: [expenseSchema]
+    },
+    advanceList: {
+        type: [advanceSchema]
+    },
+    historyList: {
+        type: [historySchema]
+    }
 })
+
 
 module.exports = mongoose.model('bulkImportSchema', bulkImportSchema)

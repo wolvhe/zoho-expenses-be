@@ -1,4 +1,5 @@
 // const newReportSchema = require("../../models/reports/reports")
+const bulkImport = require("../../models/reports/bulkImport")
 const bulkImportSchema = require("../../models/reports/bulkImport")
 
 const updateReports = async (req, res) => {
@@ -13,12 +14,35 @@ const updateReports = async (req, res) => {
     },{
         reportName: req.body.newReportName || currentReport.reportName,
         businessPurpose: req.body.newBusinessPurpose || currentReport.businessPurpose,
-        durationFrom: req.body.newDurationFrom || currentReport.durationFrom,
-        durationTo: req.body.newDurationTo || currentReport.durationTo,
+        startDate: req.body.newStartDate || currentReport.startDate,
+        endDate: req.body.newEndDate || currentReport.endDate,
         associateWithTrip: req.body.newAssociateWithTrip || currentReport.associateWithTrip,
     })
     // console.log(updateReport);
     res.end(JSON.stringify(updateReport))
 }
 
-module.exports = {updateReports}
+const updateExpenseInReport = async (req, res) => {
+    const reportDetails = {
+        _id: req.body.reportId
+    }
+    const updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
+        {
+            $addToSet: {expenseList: {expenseId: req.body.expenseId}},
+            $push: {historyList: {message: `Total of ${req.body.amount} is added`}}
+        })
+    res.end(JSON.stringify(updatedReport))
+}
+
+const updateAdvanceInReport = async (req, res) => {
+    const reportDetails = {
+        _id: req.body.reportId
+    }
+    const updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
+        {
+            $addToSet: {advanceList: {advanceId: req.body.advanceId}},
+            $push: {historyList: {message: `An Advance payment of ${req.body.amount} has been applied`}}
+        })
+}
+
+module.exports = {updateReports, updateExpenseInReport, updateAdvanceInReport}

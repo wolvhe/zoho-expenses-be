@@ -22,7 +22,7 @@ const getAllReports = async (req, res) => {
 }
 
 const getPendingReports = async (req, res) => {
-    const PendingReports = newReportSchema.find({email: req.body.email,status: "DRAFT"}, function(err, result) {
+    const PendingReports = newReportSchema.find({email: req.params.email,status: "DRAFT"}, function(err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -32,9 +32,20 @@ const getPendingReports = async (req, res) => {
 }
 
 const getApprovedReports = async (req, res) => {
-    const ApprovedReports = newReportSchema.find({email: req.body.email,status: "APPROVED"}, function(err, result) {
+    const ApprovedReports = newReportSchema.find({email: req.params.email,status: "APPROVED"}, function(err, result) {
         if (err) {
             console.log(err);
+        } else {
+            res.json(result)
+        }
+    })
+}
+
+const getReportsByID = async (req, res) => {
+    const reportFindedByID = bulkImportSchema.findOne({email: req.params.email, _id: req.params._id}, function(err, result) {
+        if (err) {
+            console.log(err)
+            res.end(err)
         } else {
             res.json(result)
         }
@@ -44,5 +55,6 @@ const getApprovedReports = async (req, res) => {
 module.exports = {
     getAllReports,
     getPendingReports,
-    getApprovedReports
+    getApprovedReports,
+    getReportsByID
 }
