@@ -89,7 +89,7 @@ router.get('/getname/:mail', async (req, res) => {
     const userinfo = await Cust.findOne({ email: req.params.mail });
     // console.log(userinfo);
 
-    res.send(userinfo.org_name);
+    // res.send(userinfo.org_name);
 });
 
 router.get('/gettrip/:mail', async (req, res) => {

@@ -28,9 +28,10 @@ const updateExpenseInReport = async (req, res) => {
     }
     let updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
         {
+            total: req.body.amount,
             $addToSet: {expenseList: {expenseId: req.body.expenseId}},
             $push: {historyList: {message: `Total of ${req.body.amount} is added`}}
-        })
+        }, {new: true})
     console.log(updatedReport)
     res.end(JSON.stringify(updatedReport))
 }
@@ -41,9 +42,10 @@ const updateAdvanceInReport = async (req, res) => {
     }
     let updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
         {
+            toBeReimbursed: req.body.amount,
             $addToSet: {advanceList: {advanceId: req.body.advanceId}},
             $push: {historyList: {message: `An Advance payment of ${req.body.amount} has been applied`}}
-        })
+        }, {new: true})
     console.log(updatedReport)
     res.end(JSON.stringify(updatedReport))
 }
