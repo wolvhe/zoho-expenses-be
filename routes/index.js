@@ -3,7 +3,8 @@ var router = express.Router();
 
 const {signup}=require('../controllers/signup')
 const {login}=require('../controllers/login')
-const {savetrip, deletetrip}=require('../controllers/trips')
+const {savetrip}=require('../controllers/trips')
+const {deleteTrip}=require('../controllers/deletetrip')
 const {saveadvance}=require('../controllers/advance')
 const Cust= require('../models/Cust')
 const Trip= require('../models/trips');
@@ -89,7 +90,7 @@ router.get('/getname/:mail', async (req, res) => {
     const userinfo = await Cust.findOne({ email: req.params.mail });
     // console.log(userinfo);
 
-    res.send(userinfo.org_name);
+    // res.send(userinfo.org_name);
 });
 
 router.get('/gettrip/:mail', async (req, res) => {
@@ -106,6 +107,15 @@ router.get('/getindtrip/:id', async (req, res) => {
 
     res.send(tripinfo);
 });
+
+
+router.delete('/trips/delete/:id', deleteTrip)
+
+
+
+
+
+
 router.get('/getadvance/:mail',async (req,res)=>{
     // console.log(req.params);
     const advanceinfo= await Advance.find({email:req.params.mail});
