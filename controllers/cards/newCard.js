@@ -49,7 +49,7 @@ const newCorporateCardByBank = async (req, res) => {
             customerID: req.body.customerID,
             password: req.body.password
         })
-        console.log(req.body.customerID);
+        // console.log(req.body.customerID);
         // console.log(card);
         const saveCard = await card.save()
         res.end(JSON.stringify(saveCard))

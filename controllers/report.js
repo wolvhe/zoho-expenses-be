@@ -7,9 +7,9 @@ const report = async (req, res) => {
         const rep = new Report({
                 email,reports:[{rep_name,purpose,start_dur,end_dur,ast_trip}]
         })
-        console.log(rep);
+        // console.log(rep);
         const savedReport = await rep.save();
-        console.log(savedReport);
+        // console.log(savedReport);
         console.log("saved dacoments-------------------------------");
         return res.send("sucess");
     }else{

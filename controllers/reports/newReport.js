@@ -14,10 +14,12 @@ const newReport = async (req, res) => {
             associateWithTrip: req.body.associateWithTrip,
             status: req.body.status,
             // history: req.body.history
-            historyList: req.body.historyList
+            historyList: req.body.historyList,
+            total: req.body.total || 0,
+            toBeReimbursed: req.body.toBeReimbursed || 0
         })
         await report.save()
-        console.log(report)
+        // console.log(report)
         res.end(JSON.stringify(report))
     } catch (err) {
         console.log(err);

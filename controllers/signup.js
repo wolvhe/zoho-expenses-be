@@ -13,7 +13,7 @@ const signup = async (req, res) => {
         Phone: req.body.phone
     })
     // console.log(req.body)
-    console.log(cust);
+    // console.log(cust);
     try {
   
         console.log("initiating save command -------------------------");

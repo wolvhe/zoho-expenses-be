@@ -56,7 +56,7 @@ const {getAllCards} = require("../controllers/cards/getCards")
 
 
 router.post('/sortexpenses', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     let a=1;
     const b="expenses."+req.body.field;
     if(req.body.order!=="asc"){
@@ -93,28 +93,28 @@ router.get('/getname/:mail', async (req, res) => {
 });
 
 router.get('/gettrip/:mail', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const tripinfo= await Trip.find({email:req.params.mail});
-    console.log(tripinfo);
+    // console.log(tripinfo);
 
     res.send(tripinfo);
 });
 router.get('/getindtrip/:id', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const tripinfo= await Trip.find({_id:req.params.id});
     // console.log(tripinfo);
 
     res.send(tripinfo);
 });
 router.get('/getadvance/:mail',async (req,res)=>{
-    console.log(req.params);
+    // console.log(req.params);
     const advanceinfo= await Advance.find({email:req.params.mail});
-    console.log(advanceinfo);
+    // console.log(advanceinfo);
 
     res.send(advanceinfo);
 });
 router.get('/getindadvance/:id', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const tripinfo= await Advance.find({_id:req.params.id});
     // console.log(tripinfo);
 
@@ -133,38 +133,38 @@ router.get('/getindadvance/:id', async (req, res) => {
 // });
 
 router.get('/test', (req, res) => {
-    console.log("hello");
+    // console.log("hello");
     res.send("working");
 });
 router.get('/getallexpenses/:mail', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const allexpenses = await Expense.findOne({ email: req.params.mail });
-    console.log(allexpenses.expenses);
+    // console.log(allexpenses.expenses);
 
     res.send(allexpenses.expenses);
 });
 
 router.get('/getallexpenses/:mail', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     // console.log(req.headers.email);
 
     const allexpenses = await Expense.findOne({ email: req.params.mail });
-    console.log(allexpenses);
+    // console.log(allexpenses);
     
     res.send(allexpenses.expenses);
 });
 
-router.get('/getexpense/:id', async (req, res) => {
-    console.log(req.params);
-    console.log(req.headers.email);
+router.get('/getexpense/:email/:id', async (req, res) => {
+    // console.log(req.params);
+    // console.log(req.headers.email);
     let exp={};
-    const allexpenses = await Expense.findOne({ email: req.headers.email });
+    const allexpenses = await Expense.findOne({ email: req.params.email });
     allexpenses.expenses.map(i=>{
         if(i._id==req.params.id){
             exp=i;
         }
     })
-    console.log(exp);
+    // console.log(exp);
     res.send(exp);
     // res.send(allexpenses.expenses);
 });

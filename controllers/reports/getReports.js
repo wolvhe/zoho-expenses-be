@@ -44,7 +44,7 @@ const getApprovedReports = async (req, res) => {
 const getReportsByID = async (req, res) => {
     const reportFindedByID = bulkImportSchema.findOne({email: req.params.email, _id: req.params._id}, function(err, result) {
         if (err) {
-            console.log(err)
+            // console.log(err)
             res.end(err)
         } else {
             res.json(result)

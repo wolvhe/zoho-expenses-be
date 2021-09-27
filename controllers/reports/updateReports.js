@@ -23,26 +23,29 @@ const updateReports = async (req, res) => {
 }
 
 const updateExpenseInReport = async (req, res) => {
-    const reportDetails = {
+    let reportDetails = {
         _id: req.body.reportId
     }
-    const updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
+    let updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
         {
             $addToSet: {expenseList: {expenseId: req.body.expenseId}},
             $push: {historyList: {message: `Total of ${req.body.amount} is added`}}
         })
+    console.log(updatedReport)
     res.end(JSON.stringify(updatedReport))
 }
 
 const updateAdvanceInReport = async (req, res) => {
-    const reportDetails = {
+    let reportDetails = {
         _id: req.body.reportId
     }
-    const updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
+    let updatedReport = await bulkImportSchema.findOneAndUpdate(reportDetails,
         {
             $addToSet: {advanceList: {advanceId: req.body.advanceId}},
             $push: {historyList: {message: `An Advance payment of ${req.body.amount} has been applied`}}
         })
+    console.log(updatedReport)
+    res.end(JSON.stringify(updatedReport))
 }
 
 module.exports = {updateReports, updateExpenseInReport, updateAdvanceInReport}

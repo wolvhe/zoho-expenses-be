@@ -1,7 +1,7 @@
 const Expense = require('../models/expense');
 
 const expense = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const { email,merchant, exp_date, category,amounttype, amount, paid_through, description, reference, add_to_report,receipts } = req.body;
     const emailvalid= await Expense.findOne({email:email});
     if(!emailvalid){
@@ -10,7 +10,7 @@ const expense = async (req, res) => {
         })
         // console.log(exp);
         const savedExpense = await exp.save();
-        console.log(savedExpense);
+        // console.log(savedExpense);
         console.log("saved dacoments-------------------------------");
         return res.send("sucess");
     }else{
